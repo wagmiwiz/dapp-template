@@ -1,8 +1,19 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import { ChakraProvider } from "@chakra-ui/react";
+import { AppProps } from "next/app";
+import { DAppProvider, ChainId } from "@usedapp/core";
+
+const config = {
+  readOnlyChainId: ChainId.Mainnet,
+};
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <ChakraProvider>
+      <DAppProvider config={config}>
+        <Component {...pageProps} />
+      </DAppProvider>
+    </ChakraProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
