@@ -10,7 +10,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { CHAIN_NAMES, useBlockNumber, useEthers } from "@usedapp/core";
+import {useBlockNumber, useChainMeta, useEthers} from "@usedapp/core";
 
 const MintStats = () => {
   const { account } = useEthers();
@@ -22,7 +22,7 @@ const MintStats = () => {
   const { chainId } = useEthers();
 
   // @ts-ignore
-  const chainName = CHAIN_NAMES[parseInt(chainId)];
+  const {chainName} = useChainMeta(chainId)
 
   return (
     <VStack spacing={6}>
